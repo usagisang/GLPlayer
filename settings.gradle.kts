@@ -3,7 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven(url = "https://www.jitpack.io")
     }
 }
 dependencyResolutionManagement {
@@ -15,5 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GLPlayer"
 include(":app")
-include(":glplayer")
 include(":glplayer")

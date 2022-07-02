@@ -2,9 +2,11 @@ package top.gochiusa.glplayer.opengl
 
 import android.graphics.Color
 import android.graphics.SurfaceTexture
+import android.opengl.GLES20
 import android.opengl.GLES20.*
 import android.opengl.GLSurfaceView
 import android.opengl.Matrix
+import androidx.annotation.ColorInt
 import top.gochiusa.glplayer.opengl.base.ProgramData
 import top.gochiusa.glplayer.opengl.objects.EntireScreen
 import top.gochiusa.glplayer.opengl.programs.VideoShaderProgram
@@ -16,7 +18,8 @@ class ProgramsRenderer(
     private val glSurfaceView: VideoGLSurfaceView
 ): GLSurfaceView.Renderer {
 
-    var clearColor: Color? = null
+    @ColorInt
+    var clearColor: Int? = null
 
     /**
      * OES纹理的id
@@ -55,7 +58,7 @@ class ProgramsRenderer(
     override fun onSurfaceCreated(gl: GL10?, config: EGLConfig?) {
         // 在create时尝试进行一次设置
         clearColor?.let {
-            glClearColor(it.red(), it.green(), it.blue(), it.alpha())
+            glClearColor(Color.red(it), Color.green(it), Color.blue(it), Color.alpha(it))
         }
         glSurfaceView.onSurfaceTextureAvailable(init())
 
@@ -74,7 +77,7 @@ class ProgramsRenderer(
 
     override fun onDrawFrame(gl: GL10?) {
         clearColor?.let {
-            glClearColor(it.red(), it.green(), it.blue(), it.alpha())
+            glClearColor(Color.red(it), Color.green(it), Color.blue(it), Color.alpha(it))
         }
         // 把窗口清除为glClearColor的颜色
         glClear(GL_COLOR_BUFFER_BIT)
@@ -137,5 +140,9 @@ class ProgramsRenderer(
         val temp = FloatArray(16)
         Matrix.multiplyMM(temp, 0, projectionMatrix, 0, modelMatrix, 0)
         System.arraycopy(temp, 0, projectionMatrix, 0, temp.size)
+    }
+
+    private fun glClearColor(red: Int, green: Int, blue: Int, alpha: Int) {
+        glClearColor(red.toFloat(), green.toFloat(), blue.toFloat(), alpha.toFloat())
     }
 }

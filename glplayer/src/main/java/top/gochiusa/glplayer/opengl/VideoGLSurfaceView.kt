@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
 import android.view.Surface
+import androidx.annotation.ColorInt
 import top.gochiusa.glplayer.base.SurfaceProvider
 import top.gochiusa.glplayer.entity.Format
 import top.gochiusa.glplayer.listener.VideoMetadataListener
@@ -41,7 +42,7 @@ class VideoGLSurfaceView
         renderMode = RENDERMODE_WHEN_DIRTY
     }
 
-    fun setClearColor(color: Color) {
+    fun setClearColor(@ColorInt color: Int) {
         queueEvent {
             renderer.clearColor = color
         }

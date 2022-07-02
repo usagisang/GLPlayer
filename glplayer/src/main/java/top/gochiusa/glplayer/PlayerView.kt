@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.SurfaceView
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.ColorInt
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -97,11 +98,11 @@ class PlayerView
     /**
      * 修改[surfaceView]的背景颜色
      */
-    fun setSurfaceBackground(color: Color) {
+    fun setSurfaceBackground(@ColorInt color: Int) {
         if (surfaceView is VideoGLSurfaceView) {
             surfaceView.setClearColor(color)
         } else {
-            surfaceView.setBackgroundColor(color.toArgb())
+            surfaceView.setBackgroundColor(color)
         }
     }
 
