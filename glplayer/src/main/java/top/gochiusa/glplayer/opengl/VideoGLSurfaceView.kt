@@ -1,7 +1,6 @@
 package top.gochiusa.glplayer.opengl
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.SurfaceTexture
 import android.opengl.GLSurfaceView
 import android.os.Handler

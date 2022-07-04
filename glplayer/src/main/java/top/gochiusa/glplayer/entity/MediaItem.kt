@@ -17,7 +17,7 @@ class MediaItem {
         uri = null
     }
 
-    fun localSource(): Boolean = uri != null || !url.startsWith("http")
+    fun localSource(): Boolean = uri != null || !url.startsWith("http", ignoreCase = true)
 
     companion object {
 

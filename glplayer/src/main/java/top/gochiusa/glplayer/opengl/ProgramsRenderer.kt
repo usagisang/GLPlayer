@@ -2,7 +2,6 @@ package top.gochiusa.glplayer.opengl
 
 import android.graphics.Color
 import android.graphics.SurfaceTexture
-import android.opengl.GLES20
 import android.opengl.GLES20.*
 import android.opengl.GLSurfaceView
 import android.opengl.Matrix
