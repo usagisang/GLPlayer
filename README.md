@@ -1,6 +1,7 @@
 # GLPlayer
 
 ![LICENSE](https://img.shields.io/badge/license-MIT-blue)
+[![](https://jitpack.io/v/usagisang/GLPlayer.svg)](https://jitpack.io/#usagisang/GLPlayer)
 
 GLPlayer是一个在Android平台上工作的音频/视频播放器。"GL"两个字母取自"OpenGL"，表明这是利用OpenGL的相应API进行视频渲染的媒体播放器。它的主要功能实现依赖于Android平台内的基础Media组件：解封装媒体文件基于`MediaExtractor`，音频帧/视频帧基于`MediaCodec`进行硬解码，视频渲染基于OpenGL ES，音频渲染基于`AudioTrack`。
 
