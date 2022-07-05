@@ -110,6 +110,7 @@ class VideoGLSurfaceView
                 surfaceTexture?.apply {
                     runCatching {
                         updateTexImage()
+                        getTransformMatrix(renderer.textureMatrix)
                     }.onFailure {
                         PlayerLog.e(message = it)
                     }

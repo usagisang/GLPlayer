@@ -12,13 +12,15 @@ internal class VideoShaderProgram(
 
     private val uTextureLocation: Int = getUniformLocation(U_TEXTURE)
     private val uMatrixLocation: Int = getUniformLocation(U_MATRIX)
+    private val vTextureMatrixLocation: Int = getUniformLocation(V_TEXTURE_MATRIX)
 
     val aPositionLocation: Int = getAttribLocation(A_POSITION)
 
     val aTextureCoordinatesLocation = getAttribLocation(A_TEXTURE_COORDINATES)
 
-    fun setUniforms(matrix: FloatArray, textureId: Int) {
-        glUniformMatrix4fv(uMatrixLocation, 1, false, matrix, 0)
+    fun setUniforms(uMatrix: FloatArray, textureId: Int, vMatrix: FloatArray) {
+        glUniformMatrix4fv(uMatrixLocation, 1, false, uMatrix, 0)
+        glUniformMatrix4fv(vTextureMatrixLocation, 1, false, vMatrix, 0)
         // 设置活动的纹理单元
         glActiveTexture(GL_TEXTURE0)
         glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, textureId)
@@ -30,5 +32,6 @@ internal class VideoShaderProgram(
         private const val A_TEXTURE_COORDINATES = "a_TextureCoordinates"
         private const val U_TEXTURE = "u_Texture"
         private const val U_MATRIX = "u_Matrix"
+        private const val V_TEXTURE_MATRIX = "v_TextureMatrix"
     }
 }

@@ -42,11 +42,11 @@ internal class EntireScreen: ProgramData<VideoShaderProgram> {
             // 数据顺序: X, Y, S, T
             // 三角形扇形
             0f, 0f, 0.5f, 0.5f,
-            -1f, -1f, 0f, 1f,
-            1f, -1f, 1f, 1f,
-            1f, 1f, 1f, 0f,
-            -1f, 1f, 0f, 0f,
-            -1f, -1f, 0f, 1f
+            -1f, -1f, 0f, 0f,
+            1f, -1f, 1f, 0f,
+            1f, 1f, 1f, 1f,
+            -1f, 1f, 0f, 1f,
+            -1f, -1f, 0f, 0f,
         )
     }
 }

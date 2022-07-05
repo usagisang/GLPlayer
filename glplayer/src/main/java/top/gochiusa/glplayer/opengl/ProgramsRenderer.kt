@@ -47,6 +47,11 @@ class ProgramsRenderer(
      */
     private val modelMatrix: FloatArray = FloatArray(16)
 
+    /**
+     * 纹理所使用的矩阵，对应于SurfaceTexture.getTransformMatrix()
+     */
+    internal val textureMatrix: FloatArray = FloatArray(16)
+
     private var videoWidth: Int = -1
     private var videoHeight: Int = -1
     private var videoRotation: Float = 0F
@@ -62,6 +67,7 @@ class ProgramsRenderer(
         glSurfaceView.onSurfaceTextureAvailable(init())
 
         Matrix.setIdentityM(projectionMatrix, 0)
+        Matrix.setIdentityM(textureMatrix, 0)
         videoShaderProgram = VideoShaderProgram(glSurfaceView.context)
         entireScreen = EntireScreen()
     }
@@ -82,7 +88,7 @@ class ProgramsRenderer(
         glClear(GL_COLOR_BUFFER_BIT)
 
         videoShaderProgram.useProgram()
-        videoShaderProgram.setUniforms(projectionMatrix, textureId)
+        videoShaderProgram.setUniforms(projectionMatrix, textureId, textureMatrix)
 
         entireScreen.bindData(videoShaderProgram)
         entireScreen.draw()
